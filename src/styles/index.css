@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Design token — docs/DESIGN.md §2.1 (format "R G B" agar bisa dipakai dengan opacity Tailwind) */
+:root {
+  --bg: 250 250 247;          /* #FAFAF7 */
+  --surface: 255 255 255;     /* #FFFFFF */
+  --line: 228 230 236;
+  --text: 30 36 48;           /* #1E2430 */
+  --text-muted: 91 100 117;   /* #5B6475 */
+  --primary: 47 91 234;       /* #2F5BEA */
+  --primary-soft: 220 230 255;/* #DCE6FF */
+  --success: 31 138 91;       /* #1F8A5B */
+  --attention: 180 87 15;     /* #B4570F */
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: 22 24 29;
+    --surface: 31 34 41;
+    --line: 52 56 66;
+    --text: 232 234 240;
+    --text-muted: 160 167 180;
+    --primary: 124 155 255;
+    --primary-soft: 40 52 92;
+    --success: 76 195 138;
+    --attention: 240 163 94;
+    color-scheme: dark;
+  }
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  @apply bg-bg text-ink font-sans text-base antialiased;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+:focus-visible {
+  outline: 3px solid rgb(var(--primary));
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+  }
+}
